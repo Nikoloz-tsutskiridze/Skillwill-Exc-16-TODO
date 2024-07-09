@@ -20,7 +20,7 @@ export const TodoForm = ({ addTodo }) => {
         placeholder="What is the task today?"
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit" className="todo-btn">
+      <button type="submit" className="todo-btn" disabled={value === ""}>
         Add Task
       </button>
     </form>
