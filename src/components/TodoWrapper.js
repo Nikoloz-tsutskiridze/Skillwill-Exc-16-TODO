@@ -2,9 +2,33 @@ import React, { useState } from "react";
 import { TodoForm } from "./TodoForm";
 import { Todo } from "./Todo";
 import { v4 as uuidv4 } from "uuid";
-import { isEditable } from "@testing-library/user-event/dist/utils";
 import { EditTodoForm } from "./EditTodoForm";
+import { useLanguage } from "../LanguageContext";
 uuidv4();
+
+const Header = () => {
+  const { language, toggleLanguage } = useLanguage();
+
+  const translations = {
+    en: {
+      title: "Todo App",
+      languageToggle: "Switch Language",
+    },
+    ge: {
+      title: "Todo აპლიკაცია",
+      languageToggle: "ენის შეცვლა",
+    },
+  };
+
+  return (
+    <header>
+      <h1>{translations[language].title}</h1>
+      <button onClick={toggleLanguage}>
+        {translations[language].languageToggle}
+      </button>
+    </header>
+  );
+};
 
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
@@ -16,12 +40,13 @@ export const TodoWrapper = () => {
     ]);
   };
 
-  const toggleComplete = (id) =>
+  const toggleComplete = (id) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
+  };
 
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
@@ -44,6 +69,7 @@ export const TodoWrapper = () => {
   };
   return (
     <div className="TodoWrapper">
+      <Header />
       <h1>Get Things Done!</h1>
       <TodoForm addTodo={addTodo} />
 
