@@ -60,7 +60,7 @@ h1 {
   background: #8758ff;
   color: #fff;
   border: none;
-  padding: 0.55rem;
+  padding: 0.57rem;
   cursor: pointer;
 }
 
@@ -92,5 +92,14 @@ h1 {
 
 .edit-icon,
 .delete-icon {
+  cursor: pointer;
+}
+
+.btn-lang {
+  background: #8758ff;
+  color: #fff;
+  border: none;
+  padding: 0.55rem;
+  margin-bottom: 2rem;
   cursor: pointer;
 }

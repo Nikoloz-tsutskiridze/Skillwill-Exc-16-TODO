@@ -3,32 +3,8 @@ import { TodoForm } from "./TodoForm";
 import { Todo } from "./Todo";
 import { v4 as uuidv4 } from "uuid";
 import { EditTodoForm } from "./EditTodoForm";
-import { useLanguage } from "../LanguageContext";
+import { Header } from "../Header.js";
 uuidv4();
-
-const Header = () => {
-  const { language, toggleLanguage } = useLanguage();
-
-  const translations = {
-    en: {
-      title: "Todo App",
-      languageToggle: "Switch Language",
-    },
-    ge: {
-      title: "Todo აპლიკაცია",
-      languageToggle: "ენის შეცვლა",
-    },
-  };
-
-  return (
-    <header>
-      <h1>{translations[language].title}</h1>
-      <button onClick={toggleLanguage}>
-        {translations[language].languageToggle}
-      </button>
-    </header>
-  );
-};
 
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
@@ -70,7 +46,7 @@ export const TodoWrapper = () => {
   return (
     <div className="TodoWrapper">
       <Header />
-      <h1>Get Things Done!</h1>
+
       <TodoForm addTodo={addTodo} />
 
       {todos.map((todo, index) =>

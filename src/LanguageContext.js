@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 const LanguageContext = createContext();
 
-export const LanguageProvider = ({ Children }) => {
+export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState("en");
 
   const toggleLanguage = () => {
@@ -11,7 +11,7 @@ export const LanguageProvider = ({ Children }) => {
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage }}>
-      {Children}
+      {children}
     </LanguageContext.Provider>
   );
 };
